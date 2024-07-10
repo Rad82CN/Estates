@@ -17,7 +17,7 @@ class AuthController extends Controller
             [
                 'name' => 'required|min:3|max:20',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|confirmed|min:8',
+                'password' => 'required|confirmed|min:8', //name of the confirmation field must be password_confirmation
             ]
         );
 
