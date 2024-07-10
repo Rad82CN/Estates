@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\SupportController;
+use App\Http\Controllers\TermsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+//simple routes
+Route::get('/', [IndexController::class , 'index'])->name('index');
+Route::get('/terms', [TermsController::class , 'terms'])->name('terms');
+Route::get('/support', [SupportController::class , 'support'])->name('support');
