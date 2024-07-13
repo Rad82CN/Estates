@@ -25,7 +25,7 @@ class AuthController extends Controller
             ]
         );
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('success', 'Account created successfully!');
     }
 
     public function login() {
@@ -53,6 +53,6 @@ class AuthController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('success', 'Logged out successfully!');
     }
 }

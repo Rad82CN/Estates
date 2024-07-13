@@ -1,4 +1,5 @@
 @extends('layouts.layout')
+
 @section('title', 'Dashboard')
 
 @section('content')
@@ -9,10 +10,8 @@
     </div>
 
     <div class="col-6">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            Idea created Successfully
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+
+        @include('shared.success-msg')
         <h4> Share yours ideas </h4>
         <div class="row">
             <div class="mb-3">
