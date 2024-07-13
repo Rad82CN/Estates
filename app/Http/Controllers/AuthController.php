@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserLoginRequest;
+use App\Http\Requests\UserRegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,14 +14,8 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function store() {
-        $validated = request()->validate(
-            [
-                'name' => 'required|min:3|max:20',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|confirmed|min:8', //name of the confirmation field must be password_confirmation
-            ]
-        );
+    public function store(UserRegisterRequest $request) {
+        $validated = $request->validated();
 
         User::create(
             [
@@ -36,17 +32,12 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function authenticate() {
-        $validated = request()->validate(
-            [
-                'email' => 'required|email',
-                'password' => 'required|min:8',
-            ]
-        );
+    public function authenticate(UserLoginRequest $request) {
+        $validated = $request->validated();
 
         if(auth()->attempt($validated)) {
 
-            request()->session()->regenerate();
+            $request->session()->regenerate();
             
             return redirect()->route('index')->with('success', 'Logged in successfully!');
         }
