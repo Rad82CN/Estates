@@ -12,16 +12,9 @@
     <div class="col-6">
 
         @include('shared.success-msg')
-        <h4> Share yours ideas </h4>
-        <div class="row">
-            <div class="mb-3">
-                <textarea class="form-control" id="idea" rows="3"></textarea>
-            </div>
-            <div class="">
-                <button class="btn btn-dark"> Share </button>
-            </div>
-        </div>
-        <hr>
+
+        @include('shared.share-estate')
+        
         <div class="mt-3">
             <div class="card">
                 <div class="px-3 pt-4 pb-2">
