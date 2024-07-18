@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstateController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TermsController;
@@ -26,3 +27,7 @@ Route::get('/support', [SupportController::class , 'support'])->name('support');
 Route::get('/profile', [UserController::class , 'profile'])->name('profile')->middleware('auth');
 Route::resource('users', UserController::class)->only(['edit', 'update'])->middleware('auth');
 Route::resource('users', UserController::class)->only(['show']);
+
+//routes for creating, showing, editting and deleting Estate posts
+Route::resource('estates', EstateController::class)->except(['index', 'show'])->middleware('auth');
+Route::resource('estates', EstateController::class)->only(['show']);
