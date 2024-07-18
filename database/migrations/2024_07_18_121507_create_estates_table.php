@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('estates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('image');
-            $table->string('content');
+            $table->string('image')->nullable();
+            $table->string('address');
+            $table->string('dimensions');
+            $table->string('floor');
+            $table->string('description');
             $table->timestamps();
         });
     }

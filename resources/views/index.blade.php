@@ -13,7 +13,7 @@
 
         @include('shared.success-msg')
 
-        @include('shared.share-estate')
+        @include('estates.share-estate')
         
         <div class="mt-3">
             <div class="card">

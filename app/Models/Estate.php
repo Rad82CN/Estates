@@ -12,6 +12,17 @@ class Estate extends Model
     protected $fillable = [
         'user_id',
         'image',
-        'content',
+        'address',
+        'dimensions',
+        'floor',
+        'description',
     ];
+
+    public function getImageURL() {
+        if($this->image) {
+            return url('storage/' . $this->image);
+        }
+        
+        return "https://api.dicebear.com/9.x/identicon/svg";
+    }
 }

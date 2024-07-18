@@ -1,6 +1,6 @@
 @auth()
     <h4> Share your Estates Here </h4>
-    <form action="#">
+    <form action="{{ route('estates.create') }}" method="get">
         <div class="row">
             <div class="">
                 <button class="btn btn-dark"> Share </button>
