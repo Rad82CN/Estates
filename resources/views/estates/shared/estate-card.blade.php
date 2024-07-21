@@ -14,6 +14,11 @@
                     <a class="text-primary mx-2" href="{{ route('estates.edit', $estate->id) }}">
                         Edit
                     </a>
+                    <form method="post" action="{{ route('estates.destroy', $estate->id) }}">
+                        @csrf
+                        @method('delete')   
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
                 @endcan
             </div>
         </div>

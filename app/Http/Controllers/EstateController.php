@@ -30,8 +30,12 @@ class EstateController extends Controller
         return redirect()->route('index')->with('success', 'Your Estate was successfully posted!');
     }
 
-    public function destroy() {
-        //
+    public function destroy(Estate $estate) {
+        $this->authorize('destroy', $estate);
+
+        $estate->delete();
+
+        return redirect()->route('index')->with('success', 'The Estate was successfully deleted!');
     }
 
     public function edit(Estate $estate) {

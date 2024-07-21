@@ -14,4 +14,9 @@ class EstatePolicy
     {
         return ($user->is_admin || $user->id === $estate->user_id);
     }
+
+    public function destroy(User $user, Estate $estate): bool
+    {
+        return ($user->is_admin || $user->id === $estate->user_id);
+    }
 }
