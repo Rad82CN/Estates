@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 
 class EstateController extends Controller
 {
-    public function show(Estate $estate, User $user) {
+    public function show(Estate $estate) {
+        $user = new User;
+        
         return view('estates.show', compact(['estate', 'user']));
     }
 

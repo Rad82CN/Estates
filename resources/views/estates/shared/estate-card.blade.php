@@ -31,7 +31,7 @@
             <div class="mt-2">
                 <span class="fs-4 text-success me-1">Price: {{$estate->price}} $</span>
             </div>
-            <a href="{{ route('estates.users.show', [$estate->id, $estate->user->id]) }}"><button class="btn-success">
+            <a href="{{ route('estates.show', $estate->id) }}"><button class="btn-success">
                 View</button></a>
             <div>
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
