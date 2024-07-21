@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEstateRequest;
+use App\Http\Requests\UpdateEstateRequest;
 use App\Models\Estate;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,11 +34,19 @@ class EstateController extends Controller
         //
     }
 
-    public function edit() {
-        //
+    public function edit(Estate $estate) {
+        $this->authorize('update', $estate);
+
+        return view('estates.edit', compact('estate'));
     }
 
-    public function update() {
-        //
+    public function update(UpdateEstateRequest $request, Estate $estate) {
+        $this->authorize('update', $estate);
+        
+        $validated = $request->validated();
+
+        $estate->update($validated);
+
+        return redirect()->route('estates.show', $estate->id)->with('success', 'The Estate was successfully updated!');
     }
 }

@@ -9,6 +9,13 @@
                         </a></h5>
                 </div>
             </div>
+            <div class="d-flex">
+                @can('update', $estate)
+                    <a class="text-primary mx-2" href="{{ route('estates.edit', $estate->id) }}">
+                        Edit
+                    </a>
+                @endcan
+            </div>
         </div>
     </div>
     <hr>

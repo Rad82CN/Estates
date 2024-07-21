@@ -13,7 +13,7 @@
 
         @include('shared.success-msg')
 
-        @include('estates.share-estate')
+        @include('estates.shared.share-estate')
         
         @forelse ($estates as $estate)
             <div class="mt-3">
