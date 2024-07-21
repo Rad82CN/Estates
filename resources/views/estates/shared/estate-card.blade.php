@@ -5,27 +5,37 @@
                 <img style="width:50px" class="me-2 avatar-sm rounded-circle"
                     src="{{ $estate->user->getImageURL() }}" alt="{{ $estate->user->name }}">
                 <div>
-                    <h5 class="card-title mb-0"><a href="#"> {{ $estate->user->name }}
+                    <h5 class="card-title mb-0"><a href="{{ route('users.show', $estate->user->id) }}"> {{ $estate->user->name }}
                         </a></h5>
                 </div>
             </div>
         </div>
     </div>
+    <hr>
     <div class="card-body">
-        <p class="fs-6 fw-light text-muted">
-            comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
-            of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
-            ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum
-            dolor sit amet..", comes from a line in section 1.10.32.
+        <img style="width:200px" class="me-2"
+            src="{{ $estate->getImageURL() }}" alt="Estate">
+        <p class="fs-5 mt-4">
+            {{ $estate->description }}
         </p>
+        <div>
+            <span class="fs-6 me-1">Address: {{$estate->address}}</span>
+        </div>
+        <div>
+            <span class="fs-6 me-1">Dimensions: {{$estate->dimensions}}</span>
+        </div>
+        <div>
+            <span class="fs-6 me-1">Floor: {{$estate->floor}}</span>
+        </div>
         <div class="d-flex justify-content-between">
-            <div>
-                <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
-                    </span> 100 </a>
+            <div class="mt-2">
+                <span class="fs-4 text-success me-1">Price: {{$estate->price}} $</span>
             </div>
+            <a href="{{ route('estates.users.show', [$estate->id, $estate->user->id]) }}"><button class="btn-success">
+                View</button></a>
             <div>
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
-                    3-5-2023 </span>
+                    {{ $estate->created_at->diffForHumans() }} </span>
             </div>
         </div>
         <div>

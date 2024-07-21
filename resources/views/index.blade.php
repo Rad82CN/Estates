@@ -15,13 +15,17 @@
 
         @include('estates.share-estate')
         
-        @forelse ($estate as $estate)
+        @forelse ($estates as $estate)
             <div class="mt-3">
                 @include('estates.shared.estate-card')
             </div>
         @empty
             <p class="text-center mt-3">No results has been found!</p>
         @endforelse
+
+        <div class="mt-3">
+            {{ $estates->links() }}
+        </div>
     </div>
     <div class="col-3">
         @include('shared.search-bar')

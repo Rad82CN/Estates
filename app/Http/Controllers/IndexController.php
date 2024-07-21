@@ -10,11 +10,15 @@ class IndexController extends Controller
 {
     public function index() {
         
-        $estates = Estate::orderBy('created_at', 'DESC')->get();
+        $estates = Estate::orderBy('created_at', 'DESC');
         $user = new User;
+
+        if(request()->has('search')) {
+            $estates = $estates->where('description', 'like', '%' . request()->get('search','') . '%');
+        }
         
         return view('index', [
-            'estate' => $estates,
+            'estates' => $estates->paginate(6),
             'user' => $user
         ]);
     }

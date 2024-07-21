@@ -29,6 +29,15 @@
                     @enderror
                 </div>
             </div>
+            <div class="d-flex align-items-center">
+                <div>
+                    <label for="price">Price</label>
+                    <input name="price" type="text" class="form-control">
+                    @error('price')
+                        <span class="text-danger fs-6">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
             <div class="mt-4">
                 <label for="">Picture</label>
                 <input name="image" class="form-control" type="file">

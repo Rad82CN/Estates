@@ -16,6 +16,7 @@ class Estate extends Model
         'dimensions',
         'floor',
         'description',
+        'price',
     ];
 
     public function user() {
