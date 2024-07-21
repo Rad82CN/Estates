@@ -45,6 +45,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function estates() {
+        return $this->hasMany(Estate::class)->latest();
+    }
+
     public function getImageURL() {
         if($this->image) {
             return url('storage/' . $this->image);

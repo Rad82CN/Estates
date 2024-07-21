@@ -30,4 +30,4 @@ Route::resource('users', UserController::class)->only(['show']);
 
 //routes for creating, showing, editting and deleting Estate posts
 Route::resource('estates', EstateController::class)->except(['index', 'show'])->middleware('auth');
-Route::resource('estates', EstateController::class)->only(['show']);
+Route::resource('estates.users', EstateController::class)->only('show');

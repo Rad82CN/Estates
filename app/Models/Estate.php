@@ -18,6 +18,10 @@ class Estate extends Model
         'description',
     ];
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     public function getImageURL() {
         if($this->image) {
             return url('storage/' . $this->image);

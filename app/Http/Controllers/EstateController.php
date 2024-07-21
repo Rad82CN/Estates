@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEstateRequest;
 use App\Models\Estate;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EstateController extends Controller
 {
-    public function show() {
-        //
+    public function show(Estate $estate, User $user) {
+        return view('estates.show', compact(['estate', 'user']));
     }
 
     public function create() {
