@@ -45,6 +45,12 @@
             </div>
             <a href="{{ route('estates.show', $estate->id) }}"><button class="btn-success">
                 View</button></a>
+            @auth ()
+                @if (Auth::id() !== $estate->user_id)
+                    <a href="#"><button class="btn-success">
+                        Buy</button></a>
+                @endif
+            @endauth
             <div>
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
                     {{ $estate->created_at->diffForHumans() }} </span>

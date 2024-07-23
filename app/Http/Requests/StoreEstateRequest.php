@@ -27,7 +27,7 @@ class StoreEstateRequest extends FormRequest
             'dimensions' => 'required|min:1|max:60',
             'floor' => 'required|min:1|max:60',
             'description' => 'required|min:3|max:250',
-            'price' => 'required|min:1|max:20'
+            'price' => 'required|integer|min:1'
         ];
     }
 }

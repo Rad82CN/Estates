@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('dimensions');
             $table->string('floor');
             $table->string('description');
-            $table->string('price');
+            $table->integer('price')->default('1');
             $table->timestamps();
         });
     }
