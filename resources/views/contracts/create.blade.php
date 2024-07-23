@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Contract')
+@section('title', 'Create Contract')
 
 @section('content')
 <div class="row">
@@ -9,7 +9,7 @@
     </div>
 
     <div class="col-6">
-        @include('contracts.shared.contract-card')
+        @include('contracts.shared.create-contract-card')
     </div>
 
     <div class="col-3">

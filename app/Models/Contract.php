@@ -14,8 +14,8 @@ class Contract extends Model
         'name',
         'id_number',
         'description',
-        's_address',
-        'b_address',
+        'seller_address',
+        'buyer_address',
     ];
 
     public function user() {

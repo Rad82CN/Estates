@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('id_number');
             $table->string('description');
-            $table->string('s_address');
-            $table->string('b_address');
+            $table->string('seller_address');
+            $table->string('buyer_address');
             $table->timestamps();
         });
     }
