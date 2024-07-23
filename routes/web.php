@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\EstateController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\SupportController;
@@ -31,3 +32,6 @@ Route::resource('users', UserController::class)->only(['show']);
 //routes for creating, showing, editting and deleting Estate posts
 Route::resource('estates', EstateController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('estates', EstateController::class)->only('show');
+
+//contract routes
+Route::resource('contracts', ContractController::class)->only(['show', 'create', 'store', 'destroy'])->middleware('auth');
