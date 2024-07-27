@@ -19,6 +19,9 @@ data-bs-theme="dark">
             
             @auth()
                 <li class="nav-item">
+                    <a class="nav-link" href="#">Inbox</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
                 </li>
                 <li class="nav-item">

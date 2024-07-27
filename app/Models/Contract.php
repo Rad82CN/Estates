@@ -11,8 +11,10 @@ class Contract extends Model
 
     protected $fillable = [
         'user_id',
-        'name',
-        'id_number',
+        'seller_name',
+        'buyer_name',
+        'seller_id_number',
+        'buyer_id_number',
         'description',
         'seller_address',
         'buyer_address',

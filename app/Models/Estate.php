@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Estate extends Model
 {
@@ -21,6 +22,10 @@ class Estate extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function buyers(): BelongsToMany {
+        return $this->belongsToMany(User::class, 'user_estate', 'estate_id')->withTimestamps();
     }
 
     public function getImageURL() {

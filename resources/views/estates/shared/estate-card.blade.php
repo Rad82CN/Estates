@@ -47,8 +47,17 @@
                 View</button></a>
             @auth ()
                 @if (Auth::id() !== $estate->user_id)
-                    <a href="#"><button class="btn-success">
-                        Buy</button></a>
+                    @if (Auth::user()->bought($estate))
+                        <form method="POST" action="{{ route('cancel.requests', $estate->id) }}">
+                            @csrf
+                            <button class="btn-danger">cancel</button>
+                        </form>
+                    @else
+                        <form method="POST" action="{{ route('submit.requests', $estate->id) }}">
+                            @csrf
+                            <button class="btn-success">Buy</button>
+                        </form>
+                    @endif
                 @endif
             @endauth
             <div>

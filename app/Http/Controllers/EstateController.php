@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateEstateRequest;
 use App\Models\Estate;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EstateController extends Controller
 {
@@ -24,6 +25,9 @@ class EstateController extends Controller
         $validated = $request->validated();
 
         $validated['user_id'] = auth()->id();
+
+        $imagePath = $request->file('image')->store('estates', 'public');
+        $validated['image'] = $imagePath;
 
         Estate::create($validated);
 
@@ -48,6 +52,13 @@ class EstateController extends Controller
         $this->authorize('update', $estate);
         
         $validated = $request->validated();
+
+        if($request->has('image')) {
+            $imagePath = $request->file('image')->store('estates', 'public');
+            $validated['image'] = $imagePath;
+
+            Storage::disk('public')->delete($estate->image ?? '');
+        }
 
         $estate->update($validated);
 

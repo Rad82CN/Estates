@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('name');
-            $table->integer('id_number');
+            $table->string('seller_name');
+            $table->string('buyer_name');
+            $table->integer('seller_id_number');
+            $table->integer('buyer_id_number');
             $table->string('description');
             $table->string('seller_address');
             $table->string('buyer_address');
