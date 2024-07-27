@@ -3,6 +3,7 @@
 use App\Http\Controllers\BuyEstateController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\EstateController;
+use App\Http\Controllers\InboxController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TermsController;
@@ -36,6 +37,7 @@ Route::resource('estates', EstateController::class)->only('show');
 
 //contract routes
 Route::resource('contracts', ContractController::class)->only(['show', 'create', 'store', 'destroy'])->middleware('auth');
+Route::get('/inbox/{user}', [InboxController::class , 'inbox'])->name('inbox')->middleware('auth');
 Route::prefix('contracts')->middleware('auth')->group(function () {
     Route::post('/estates/{estate}/buy', [BuyEstateController::class , 'submit'])->name('submit.requests');
     Route::post('/estates/{estate}/cancel', [BuyEstateController::class , 'cancel'])->name('cancel.requests');

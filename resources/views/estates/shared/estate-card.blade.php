@@ -30,6 +30,7 @@
         <p class="fs-5 mt-4">
             {{ $estate->description }}
         </p>
+        <hr>
         <div>
             <span class="fs-6 me-1">Address: {{$estate->address}}</span>
         </div>
@@ -64,9 +65,6 @@
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
                     {{ $estate->created_at->diffForHumans() }} </span>
             </div>
-        </div>
-        <div>
-        <hr>
         </div>
     </div>
 </div>

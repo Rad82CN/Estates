@@ -3,15 +3,15 @@
 namespace App\Policies;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
-class UserPolicy
+class InboxPolicy
 {
     /**
      * Create a new policy instance.
      */
-    public function update(User $user, User $model): bool
+    public function show(User $user, User $model)
     {
-        //editing and updating a user
         return $user->is($model) || $user->is_admin;
     }
 }

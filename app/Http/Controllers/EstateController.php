@@ -26,8 +26,10 @@ class EstateController extends Controller
 
         $validated['user_id'] = auth()->id();
 
-        $imagePath = $request->file('image')->store('estates', 'public');
-        $validated['image'] = $imagePath;
+        if($request->has('image')) {
+            $imagePath = $request->file('image')->store('estates', 'public');
+            $validated['image'] = $imagePath;
+        };
 
         Estate::create($validated);
 

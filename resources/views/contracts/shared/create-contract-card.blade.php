@@ -4,18 +4,36 @@
             @csrf
             <div class="d-flex align-items-center">
                 <div>
-                    <label for="name">Name</label>
-                    <input name="name" type="text" class="form-control">
-                    @error('name')
+                    <label for="seller_name">Seller Name</label>
+                    <input name="seller_name" type="text" class="form-control">
+                    @error('seller_name')
                         <span class="text-danger fs-6">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
             <div class="d-flex align-items-center">
                 <div>
-                    <label for="id_number">ID Number</label>
-                    <input name="id_number" type="text" class="form-control">
-                    @error('id_number')
+                    <label for="buyer_name">Buyer Name</label>
+                    <input name="buyer_name" type="text" class="form-control">
+                    @error('buyer_name')
+                        <span class="text-danger fs-6">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <div>
+                    <label for="seller_id_number">Seller ID Number</label>
+                    <input name="seller_id_number" type="text" class="form-control">
+                    @error('seller_id_number')
+                        <span class="text-danger fs-6">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <div>
+                    <label for="buyer_id_number">Buyer ID Number</label>
+                    <input name="buyer_id_number" type="text" class="form-control">
+                    @error('buyer_id_number')
                         <span class="text-danger fs-6">{{ $message }}</span>
                     @enderror
                 </div>
@@ -46,7 +64,9 @@
                             <span class="d-block mt-2 mb-2 fs-6 text-danger"> {{ $message }} </span>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-dark mx-3 mb-3">Share</button>
+                    <form method="POST" action="{{ route('contracts.store') }}">
+                        <button type="submit" class="btn btn-dark mx-3 mb-3">Submit</button>
+                    </form>
             </div>
         </form>
     </div>
