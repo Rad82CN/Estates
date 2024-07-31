@@ -51,7 +51,7 @@ class User extends Authenticatable
     }
 
     public function contracts() {
-        return $this->hasMany(Contract::class);
+        return $this->hasMany(Contract::class)->latest();
     }
 
     public function boughtEstates(): BelongsToMany {
@@ -60,6 +60,18 @@ class User extends Authenticatable
 
     public function bought(Estate $estate) {
         return $this->boughtEstates()->where('estate_id', $estate->id)->exists();
+    }
+
+    public function sentContracts(): BelongsToMany {
+        return $this->belongsToMany(User::class, 'buyer_seller', 'seller_id')->withTimestamps();
+    }
+
+    public function recievedContracts(): BelongsToMany {
+        return $this->belongsToMany(User::class, 'user_buyer', 'buyer_id')->withTimestamps();
+    }
+
+    public function sent(User $user) {
+        return $this->sentContracts()->where('buyer_id', $user->id)->exists();
     }
 
     public function getImageURL() {

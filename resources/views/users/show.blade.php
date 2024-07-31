@@ -9,6 +9,9 @@
         @include('shared.left-sidebar')
     </div>
     <div class="col-6">
+
+        @include('shared.success-msg')
+
         <div class="mt-3">
             @include('users.shared.user-card')       
         </div>

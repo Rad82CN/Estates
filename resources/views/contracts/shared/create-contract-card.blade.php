@@ -1,7 +1,16 @@
 <div class="card">
     <div class="px-3 pt-4 pb-2">
-        <form enctype="multipart/form-data" method="POST" action="{{ route('contracts.store') }}">
+        <form enctype="multipart/form-data" method="POST" action="{{ route('estates.contracts.store', $estate->id) }}">
             @csrf
+            <div class="d-flex align-items-center">
+                <div>
+                    <label for="phone_number">Phone Number</label>
+                    <input name="phone_number" type="text" class="form-control">
+                    @error('phone_number')
+                        <span class="text-danger fs-6">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
             <div class="d-flex align-items-center">
                 <div>
                     <label for="seller_name">Seller Name</label>
@@ -64,7 +73,7 @@
                             <span class="d-block mt-2 mb-2 fs-6 text-danger"> {{ $message }} </span>
                         @enderror
                     </div>
-                    <form method="POST" action="{{ route('contracts.store') }}">
+                    <form method="POST" action="{{ route('estates.contracts.store', $estate->id) }}">
                         <button type="submit" class="btn btn-dark mx-3 mb-3">Submit</button>
                     </form>
             </div>

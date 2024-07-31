@@ -24,8 +24,10 @@
             <div class="mt-2">
                 <span class="fs-4 text-success me-1">Price: {{$request->price}} $</span>
             </div>
-            <a href="{{ route('contracts.create') }}"><button class="btn-success">
-                Make a contract</button></a>
+
+                <a href="{{ route('estates.contracts.create', $request->id) }}"><button class="btn-success">
+                    Make a contract</button></a>
+
             <div>
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
                     {{ $request->created_at->diffForHumans() }} </span>

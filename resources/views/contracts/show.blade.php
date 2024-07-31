@@ -9,7 +9,13 @@
     </div>
 
     <div class="col-6">
-        @include('contracts.shared.contract-card')
+
+        @include('shared.success-msg')
+
+        <div class="mt-3">
+            @include('contracts.shared.contract-card')
+        </div>
+
     </div>
 
     <div class="col-3">

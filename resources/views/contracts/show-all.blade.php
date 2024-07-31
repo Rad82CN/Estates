@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Showing an Estate')
+@section('title', 'All Contracts')
 
 @section('content')
 
@@ -9,12 +9,14 @@
         @include('shared.left-sidebar')
     </div>
     <div class="col-6">
-
-        @include('shared.success-msg')
-
-        <div class="mt-3">
-            @include('estates.shared.estate-card')
-        </div>
+        
+        @forelse ( $contracts as $contract )
+            <div class="mt-3">
+                @include('contracts.shared.request-card')
+            </div>
+        @empty
+            <p class="text-center mt-3">No results has been found!</p>
+        @endforelse
 
     </div>
     <div class="col-3">

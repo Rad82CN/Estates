@@ -36,9 +36,10 @@ Route::resource('estates', EstateController::class)->except(['index', 'show'])->
 Route::resource('estates', EstateController::class)->only('show');
 
 //contract routes
-Route::resource('contracts', ContractController::class)->only(['show', 'create', 'store', 'destroy'])->middleware('auth');
+Route::resource('estates.contracts', ContractController::class)->only(['show', 'create', 'store', 'destroy'])->middleware('auth');
 Route::get('/inbox/{user}', [InboxController::class , 'inbox'])->name('inbox')->middleware('auth');
 Route::prefix('contracts')->middleware('auth')->group(function () {
+    Route::get('/all/sent/{user}', [ContractController::class , 'all_sent'])->name('contracts.all.sent');
     Route::post('/estates/{estate}/buy', [BuyEstateController::class , 'submit'])->name('submit.requests');
     Route::post('/estates/{estate}/cancel', [BuyEstateController::class , 'cancel'])->name('cancel.requests');
 });

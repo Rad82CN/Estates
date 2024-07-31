@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Contract extends Model
 {
@@ -11,6 +12,8 @@ class Contract extends Model
 
     protected $fillable = [
         'user_id',
+        'estate_id',
+        'phone_number',
         'seller_name',
         'buyer_name',
         'seller_id_number',
@@ -19,8 +22,4 @@ class Contract extends Model
         'seller_address',
         'buyer_address',
     ];
-
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
 }

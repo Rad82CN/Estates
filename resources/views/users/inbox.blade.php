@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'inbox')
+@section('title', 'Inbox')
 
 @section('content')
 
@@ -12,7 +12,7 @@
         
         @forelse ( $requests as $request )
             <div class="mt-3">
-                @include('users.shared.request')        
+                @include('users.shared.request')
             </div>
         @empty
             <p class="text-center mt-3">No results has been found!</p>

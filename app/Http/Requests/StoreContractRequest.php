@@ -22,6 +22,7 @@ class StoreContractRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'phone_number' => 'required|numeric|digits:11',
             'seller_name' => 'required|min:1|max:40',
             'buyer_name' => 'required|min:1|max:40',
             'seller_id_number' => 'required|integer|digits:10',
