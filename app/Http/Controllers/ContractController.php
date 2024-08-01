@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContractRequest;
+use App\Http\Requests\UpdateContractRequest;
 use App\Models\Contract;
 use App\Models\Estate;
 use App\Models\User;
@@ -49,6 +50,23 @@ class ContractController extends Controller
         $contract = $user->contracts()->first();
 
         return redirect()->route('estates.contracts.show', [$estate->id, $contract->id])->with('success', 'Your contract was successfully created!');
+    }
+
+    public function edit(Estate $estate, Contract $contract) {
+        $this->authorize('destroy', $contract);
+        
+        return view('contracts.edit', compact('estate', 'contract'));
+    }
+
+    public function update(UpdateContractRequest $request, Estate $estate, Contract $contract) {
+        $this->authorize('destroy', $contract);
+
+        $validated = $request->validated();
+
+        $contract->update($validated);
+
+        return redirect()->route('estates.contracts.show', [$estate->id, $contract->id])->with('success', 'The Contract was successfully updated!');
+
     }
 
     public function destroy(Estate $estate, Contract $contract) {
