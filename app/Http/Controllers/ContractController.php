@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContractRequest;
 use App\Http\Requests\UpdateContractRequest;
+use App\Models\BuyerContract;
 use App\Models\Contract;
 use App\Models\Estate;
 use App\Models\User;
-use App\Models\UserContract;
 use App\Models\UserEstate;
 use Illuminate\Http\Request;
 
@@ -22,12 +22,15 @@ class ContractController extends Controller
     }
 
     public function all_recieved(User $user) {
-        
+
+        $found = BuyerContract::whereIn('buyer_id', $user)->pluck('contract_id');
+
+        $contracts = Contract::where('id', $found)->paginate(6);
+
+        return view('contracts.show-all-recieved', compact('user', 'contracts'));
     }
     
     public function show(Estate $estate, Contract $contract) {
-        $this->authorize('destroy', $contract);
-
         $foundBuyer = UserEstate::whereIn('estate_id', $estate)->pluck('user_id')->first();
         
         $user = User::where('id', $foundBuyer)->first();
