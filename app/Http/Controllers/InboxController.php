@@ -19,13 +19,13 @@ class InboxController extends Controller
         $notSold = $estates->whereNotIn('id', $contracts)->pluck('id');
 
         $found = UserEstate::whereIn('estate_id', $notSold)->pluck('estate_id');
+
+        $foundBuyer = UserEstate::whereIn('estate_id', $notSold)->pluck('user_id')->first();
+
+        $buyer = User::where('id', $foundBuyer)->first();
         
         $requests = Estate::whereIn('id', $found)->paginate(5);
 
-        return view('users.inbox', compact('user', 'requests'));
+        return view('users.inbox', compact('user', 'requests', 'buyer'));
     }
 }
-
-//where('estate_id', $estate->id)->exists();
-
-//$requests = Estate::whereIn('id', $found)->paginate(5);

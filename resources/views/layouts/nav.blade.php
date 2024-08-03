@@ -27,6 +27,9 @@ data-bs-theme="dark">
                 </li>
                 --}}
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('sent.requests', Auth::id()) }}">Sent Requests</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('inbox', Auth::id()) }}">Inbox</a>
                 </li>
                 <li class="nav-item">

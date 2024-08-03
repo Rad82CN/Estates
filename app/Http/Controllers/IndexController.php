@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contract;
 use App\Models\Estate;
 use App\Models\User;
+use App\Models\UserEstate;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -12,10 +13,10 @@ class IndexController extends Controller
     public function index() {
         
         $allEstates = Estate::orderBy('created_at', 'desc');
-        $contracts = Contract::all()->pluck('estate_id');
+        $userEstates = UserEstate::all()->pluck('estate_id');
         $user = new User;
 
-        $estates = $allEstates->whereNotIn('id', $contracts);
+        $estates = $allEstates->whereNotIn('id', $userEstates);
 
         if(request()->has('search')) {
             $estates = $estates->where('description', 'like', '%' . request()->get('search','') . '%');

@@ -63,11 +63,11 @@ class User extends Authenticatable
     }
 
     public function sentContracts(): BelongsToMany {
-        return $this->belongsToMany(User::class, 'buyer_seller', 'seller_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'buyer_seller', 'seller_id', 'buyer_id')->withTimestamps();
     }
 
     public function recievedContracts(): BelongsToMany {
-        return $this->belongsToMany(User::class, 'user_buyer', 'buyer_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'buyer_seller', 'buyer_id', 'seller_id')->withTimestamps();
     }
 
     public function sent(User $user) {

@@ -4,7 +4,8 @@
                 <img style="width:200px" class="me-2"
                     src="{{ $request->getImageURL() }}" alt="Estate">
             <div>
-                <h4 class="text-success">Requested</h4>
+                <h4 class="text-success">Requested by: <a href="{{ route('users.show', $buyer->id) }}">
+                    {{ $buyer->name }}</a></h4>
             </div>
         </div>
         <p class="fs-5 mt-4">

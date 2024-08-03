@@ -29,11 +29,14 @@
         <div class="d-flex justify-content-between">
             @auth()
                 @can('destroy', $contract)
-                    @if (Auth::id() !== $contract->user_id)
+                    @if (Auth::id() === $contract->user_id)
                         @if (Auth::user()->sent($user))
-                            <h5>Sent</h5>
+                            <form method="POST" action="{{ route('contracts.unsend', [$estate->id, $contract->id]) }}">
+                                @csrf
+                                <button class="btn-success">unsend</button>
+                            </form>
                         @else
-                            <form method="POST" action="">
+                            <form method="POST" action="{{ route('contracts.send', [$estate->id, $contract->id]) }}">
                                 @csrf
                                 <button class="btn-success">Send to Buyer</button>
                             </form>

@@ -8,6 +8,7 @@ use App\Models\Contract;
 use App\Models\Estate;
 use App\Models\User;
 use App\Models\UserContract;
+use App\Models\UserEstate;
 use Illuminate\Http\Request;
 
 class ContractController extends Controller
@@ -21,14 +22,15 @@ class ContractController extends Controller
     }
 
     public function all_recieved(User $user) {
-        // $this->authorize('update', $user);
-
+        
     }
     
     public function show(Estate $estate, Contract $contract) {
         $this->authorize('destroy', $contract);
 
-        $user = $estate->buyers()->pluck('id');
+        $foundBuyer = UserEstate::whereIn('estate_id', $estate)->pluck('user_id')->first();
+        
+        $user = User::where('id', $foundBuyer)->first();
         
         return view('contracts.show', compact('estate', 'contract', 'user'));
     }
@@ -77,6 +79,3 @@ class ContractController extends Controller
         return redirect()->route('index')->with('success', 'The Contract was successfully deleted!');
     }
 }
-
-//$seller = User::find(auth()->id());
-//$seller->sentContracts()->attach($buyer);
