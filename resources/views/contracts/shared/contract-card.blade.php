@@ -30,7 +30,7 @@
             @auth()
                 @can('destroy', $contract)
                     @if (Auth::id() === $contract->user_id)
-                        @if (Auth::user()->sent($user))
+                        @if ($contract->sent($user))
                             <form method="POST" action="{{ route('contracts.unsend', [$estate->id, $contract->id]) }}">
                                 @csrf
                                 <button class="btn-success">unsend</button>

@@ -22,4 +22,12 @@ class Contract extends Model
         'seller_address',
         'buyer_address',
     ];
+
+    public function Contractsbuyer(): BelongsToMany {
+        return $this->belongsToMany(User::class, 'buyer_contract', 'contract_id', 'buyer_id')->withTimestamps();
+    }
+
+    public function sent(User $user) {
+        return $this->Contractsbuyer()->where('buyer_id', $user->id)->exists();
+    }
 }

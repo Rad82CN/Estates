@@ -19,13 +19,11 @@ data-bs-theme="dark">
             
             @auth()
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contracts.all.sent', Auth::id()) }}">Sent Contracts</a>
-                </li>
-                {{-- 
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('contracts.all.recieved', Auth::id()) }}">Recieved Contracts</a>
                 </li>
-                --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('contracts.all.sent', Auth::id()) }}">Sent Contracts</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('sent.requests', Auth::id()) }}">Sent Requests</a>
                 </li>

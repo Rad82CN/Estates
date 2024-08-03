@@ -9,5 +9,5 @@ class BuyerSeller extends Model
 {
     use HasFactory;
 
-    protected $table = 'buyer_seller';
+    protected $table = 'buyer_contract';
 }

@@ -12,27 +12,27 @@ class SendContractController extends Controller
 {
     public function send(Estate $estate, Contract $contract) {
 
-        $seller = User::find(auth()->id());
+        //$seller = User::find(auth()->id());
 
         $foundBuyer = UserEstate::whereIn('estate_id', $estate)->pluck('user_id')->first();
         
         $buyer = User::where('id', $foundBuyer)->first();
         
-        $seller->sentContracts()->attach($buyer);
+        $buyer->sentContracts()->attach($contract);
 
         return redirect()->route('index')->with('success', 'Your contract was successfully sent to buyer!');
     }
 
-    public function unsend(Estate $estate) {
+    public function unsend(Estate $estate, Contract $contract) {
 
-        $seller = User::find(auth()->id());
+        //$seller = User::find(auth()->id());
 
         $foundBuyer = UserEstate::whereIn('estate_id', $estate)->pluck('user_id')->first();
         
         $buyer = User::where('id', $foundBuyer)->first();
         
-        $seller->sentContracts()->detach($buyer);
+        $buyer->sentContracts()->detach($contract);
 
-        return redirect()->route('index')->with('success', 'Your contract was successfully sent to buyer!');
+        return redirect()->route('index')->with('success', 'You have unsent your contract!');
     }
 }

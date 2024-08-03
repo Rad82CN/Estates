@@ -63,15 +63,11 @@ class User extends Authenticatable
     }
 
     public function sentContracts(): BelongsToMany {
-        return $this->belongsToMany(User::class, 'buyer_seller', 'seller_id', 'buyer_id')->withTimestamps();
+        return $this->belongsToMany(Contract::class, 'buyer_contract', 'buyer_id', 'contract_id')->withTimestamps();
     }
 
-    public function recievedContracts(): BelongsToMany {
-        return $this->belongsToMany(User::class, 'buyer_seller', 'buyer_id', 'seller_id')->withTimestamps();
-    }
-
-    public function sent(User $user) {
-        return $this->sentContracts()->where('buyer_id', $user->id)->exists();
+    public function sent(Contract $contract) {
+        return $this->sentContracts()->where('contract_id', $contract->id)->exists();
     }
 
     public function getImageURL() {

@@ -45,6 +45,6 @@ Route::prefix('contracts')->middleware('auth')->group(function () {
     Route::get('/all/recieved/{user}', [ContractController::class , 'all_recieved'])->name('contracts.all.recieved');
     Route::post('/estates/{estate}/buy', [BuyEstateController::class , 'submit'])->name('submit.requests');
     Route::post('/estates/{estate}/cancel', [BuyEstateController::class , 'cancel'])->name('cancel.requests');
-    Route::post('/estates/{estate}/contracts/{contracts}/send', [SendContractController::class , 'send'])->name('contracts.send');
-    Route::post('/estates/{estate}/contracts/{contracts}/unsend', [SendContractController::class , 'unsend'])->name('contracts.unsend');
+    Route::post('/estates/{estate}/contracts/{contract}/send', [SendContractController::class , 'send'])->name('contracts.send');
+    Route::post('/estates/{estate}/contracts/{contract}/unsend', [SendContractController::class , 'unsend'])->name('contracts.unsend');
 });

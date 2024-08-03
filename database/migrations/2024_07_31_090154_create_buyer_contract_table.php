@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('buyer_seller', function (Blueprint $table) {
+        Schema::create('buyer_contract', function (Blueprint $table) {
             $table->foreignId('buyer_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('seller_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('contract_id')->constrained('contracts')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('buyer_seller');
+        Schema::dropIfExists('buyer_contract');
     }
 };
