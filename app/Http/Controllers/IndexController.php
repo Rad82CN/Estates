@@ -12,7 +12,7 @@ class IndexController extends Controller
 {
     public function index() {
         
-        $allEstates = Estate::orderBy('created_at', 'desc');
+        $allEstates = Estate::with('user')->orderBy('created_at', 'desc');
         $userEstates = UserEstate::all()->pluck('estate_id');
         $user = new User;
 
