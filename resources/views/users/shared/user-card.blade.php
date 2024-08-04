@@ -23,6 +23,8 @@
                 <p class="fs-6 fw-light">
                     {{ $user->bio }}
                 </p>
+                <hr>
+                @include('users.shared.user-stats')
         </div>
     </div>
 </div>

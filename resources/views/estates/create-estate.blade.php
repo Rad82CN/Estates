@@ -18,7 +18,7 @@
     </div>
     <div class="col-3">
         @include('shared.search-bar')
-        @include('shared.top-deals')
+        @include('shared.top-users')
     </div>
 </div>
 
