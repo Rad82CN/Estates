@@ -23,7 +23,7 @@ class BuyEstateController extends Controller
         $contracts = Contract::all()->pluck('estate_id');
         
         if($contracts->contains($estate->id)) {
-            echo "Contract is written";
+            return view('estates.error');
         } else {
             $user = User::find(auth()->id());
         
